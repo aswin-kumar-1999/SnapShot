@@ -7,17 +7,29 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      search: ''
+      search: '',
+      findImage: ''
     }
   }
 
-  searchHandler = (search) => {
-    this.setState((prevState) => {
-      if (prevState.search !== search) {
-        return {search};
-      }
-    });
+  componentDidMount() {
+    // console.log("mount")
+    this.setState({ findImage: this.state.search });
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.findImage !== this.state.search) {
+      // console.log("update")
+      this.setState({ findImage: this.state.search });
+    }
+  };
+
+
+  searchHandler = (search) => {
+    this.setState({ search: search });
+  }
+
+
 
   render() {
     return (
@@ -25,7 +37,7 @@ class App extends Component {
         <h1>Snap Shot</h1>
         <Form search={this.searchHandler} />
         <Tabs search={this.searchHandler} />
-        <Gallery searchImage={this.state.search}/>
+        {this.state.findImage && <Gallery searchImage={this.state.findImage} />}
       </Fragment>
     )
   }

@@ -1,12 +1,7 @@
 import { Component } from 'react';
 
 class TabButton extends Component {
-
-    constructor(props) {
-        super();
-
-        console.log("dsa")
-    }
+    
     getSearchValue = () => {
         this.props.onSearch(this.props.tab);
     }
