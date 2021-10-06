@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Picture from './picture';
 import Loading from '../loading';
-import NotFound from '../../notFound';
+import NotFound from '../notFound';
 import style from './gallery.module.css';
 
 class gallery extends Component {
