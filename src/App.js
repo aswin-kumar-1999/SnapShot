@@ -40,7 +40,7 @@ class App extends Component {
         <h1>Snap Shot</h1>
         {console.log("render")}
         <BrowserRouter>
-          <Switch>
+         
             <Route path='/' exact>
               <Redirect to='/snapshot' />
             </Route>
@@ -49,10 +49,10 @@ class App extends Component {
               <Tabs search={this.searchHandler} />
             </Route>
 
-            {/* <Route path='*'>
+            <Route path={'/snapshot/'+this.state.findImage}>
               {this.state.findImage && <Gallery searchImage={this.state.findImage} />}
-            </Route> */}
-          </Switch>
+            </Route>
+          
         </BrowserRouter>
         {this.state.findImage && <Gallery searchImage={this.state.findImage} />}
       </Fragment>

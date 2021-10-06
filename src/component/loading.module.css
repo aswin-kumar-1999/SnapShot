@@ -10,7 +10,7 @@
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid teal;
+    border: 6px solid rgb(2, 61, 85);
     border-color: teal transparent teal transparent;
     animation: spinner 1.2s linear infinite;
   }
