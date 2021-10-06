@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Picture from './picture';
 import NotFound from '../../notFound';
+import style from './gallery.module.css';
 
 class gallery extends Component {
 
@@ -11,7 +12,8 @@ class gallery extends Component {
             imageURL: [],
             img: ''
         };
-        console.log(props.searchImage);
+        console.log("Inside gallery",props.searchImage);
+
     }
 
     componentDidMount() {
@@ -45,12 +47,16 @@ class gallery extends Component {
                     })
                     this.setState({ imageURL });
                 }.bind(this))
+                .catch(err=>{
+                    console.log("Not Found URL")
+                })
+                
         }
     }
 
     render() {
         return (
-            <div>
+            <div className={style.gallery}>
                 {this.state.imageURL.map((elem) =>
                     <Picture srcPath={elem} />
                 )}

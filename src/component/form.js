@@ -1,4 +1,5 @@
 import { Fragment, Component } from 'react';
+import style from './form.module.css'
 
 class Form extends Component {
     constructor() {
@@ -9,20 +10,17 @@ class Form extends Component {
     }
 
     blurHandler = (event) => {
-        this.setState({findImage:event.target.value});
+        this.setState({ findImage: event.target.value });
     }
-    getSearchValue=()=>{
+    getSearchValue = () => {
         this.props.search(this.state.findImage);
     }
     render() {
         return (
-            <Fragment>
-                <div>
-                    <input type="text" onBlur={this.blurHandler} />
-                    <i class="fas fa-search" onClick={this.getSearchValue}></i>
-                </div>
-            </Fragment>
-          
+            <div className={style["search-btn"]}>
+                <input type="text" onBlur={this.blurHandler} placeholder="Search" />
+                <i class="fas fa-search btn" onClick={this.getSearchValue}></i>
+            </div>
         )
     }
 }

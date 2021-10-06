@@ -1,0 +1,17 @@
+.search-btn {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    background: rgba(205, 214, 224, 0.336);
+    padding: 5px 10px;
+    border: none;
+}
+
+i {
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    background-color: rgb(3, 43, 70);
+}

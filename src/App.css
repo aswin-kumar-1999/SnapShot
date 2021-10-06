@@ -1,0 +1,12 @@
+body{
+    font-size:18px;
+    padding: 0;
+    margin: 2vh 0 0 0;
+}
+
+h1{
+    font-family: 'Pacifico', cursive;
+    color: rgb(1, 20, 46);
+    font-size: 7vw;
+    text-align: center;
+}

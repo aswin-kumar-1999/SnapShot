@@ -1,0 +1,12 @@
+.tab-container {
+    display: flex;
+    justify-content: center;
+}
+
+.tab {
+    display: flex;
+    width: 450px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+

@@ -1,5 +1,6 @@
 import { Fragment, Component } from 'react';
 import TabButton from './tabButton';
+import style from './tabs.module.css';
 
 class Tabs extends Component {
     constructor() {
@@ -7,22 +8,20 @@ class Tabs extends Component {
         this.state = {
             findImage: ''
         }
-        this.tags = ["Mountain", "Beaches", "Birds", "Food"];
+        this.tags = ["Mountain", "Beach", "Birds", "Food"];
 
     }
 
 
     render() {
         return (
-            <Fragment>
-                <div>hii</div>
-                <div>
+            <div className={style["tab-container"]}>
+                <div className={style.tab}>
                     {this.tags.map((elem) => (
                         <TabButton tab={elem} onSearch={this.props.search} />
                     ))}
                 </div>
-
-            </Fragment>
+            </div>
         )
     }
 }

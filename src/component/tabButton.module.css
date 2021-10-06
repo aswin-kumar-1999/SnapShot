@@ -1,0 +1,15 @@
+.btn{
+    cursor: pointer;
+    width: 100px;
+    padding: 2px 0;
+    text-align: center;
+    margin-top: 30px;
+    background: rgb(3, 29, 54);
+    color: white;
+}
+
+@media screen and (max-width:450px) {
+    .btn{
+      width: 100vw;
+    }
+  }

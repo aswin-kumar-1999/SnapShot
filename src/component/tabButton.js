@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import style from './tabButton.module.css';
 
 class TabButton extends Component {
     
@@ -7,7 +8,7 @@ class TabButton extends Component {
     }
     render() {
         return (
-            <div onClick={this.getSearchValue}>
+            <div className={style.btn} onClick={this.getSearchValue}>
                 {this.props.tab}
             </div>
         )
