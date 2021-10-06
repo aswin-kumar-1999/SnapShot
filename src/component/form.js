@@ -1,4 +1,4 @@
-import { Fragment, Component } from 'react';
+import { Component } from 'react';
 import style from './form.module.css'
 
 class Form extends Component {

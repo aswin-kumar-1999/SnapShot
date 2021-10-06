@@ -11,18 +11,18 @@ class gallery extends Component {
         super();
         this.state = {
             imageURL: [],
-            img: '',
+            imgName: '',
             imageFound: ''
         };
         console.log("Inside gallery", props.searchImage);
     }
 
     componentDidMount() {
-        this.setState({ img: this.props.searchImage });
+        this.setState({ imgName: this.props.searchImage });
 
         axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=874723272ab0b8c11a40fc8c0769153f&tags=${this.props.searchImage}&per_page=24&page=1&format=json&nojsoncallback=1`)
             .then(function (response) {
-                console.log(response.data)
+                // console.log(response.data)
                 return response.data;
             })
             .then(function (data) {
@@ -31,15 +31,18 @@ class gallery extends Component {
                 })
                 this.setState({ imageURL });
             }.bind(this))
+            .catch(err => {
+                console.log("Not Found URL")
+            })
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.img !== this.props.searchImage) {
+        if (prevState.imgName !== this.props.searchImage) {
             this.setState({ imageFound: "" })
-            this.setState({ img: this.props.searchImage })
+            this.setState({ imgName: this.props.searchImage })
             axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=874723272ab0b8c11a40fc8c0769153f&tags=${this.props.searchImage}&per_page=24&page=1&format=json&nojsoncallback=1`)
                 .then(function (response) {
-                    console.log(response.data)
+                    // console.log(response.data)
                     return response.data;
                 })
                 .then(function (data) {
@@ -52,7 +55,7 @@ class gallery extends Component {
                     console.log("Not Found URL")
                 })
                 .finally(() => {
-                    if (this.state.imageURL.length == 0) {
+                    if (this.state.imageURL.length === 0) {
                         this.setState({ imageFound: "1" })
                     }
                     else {
@@ -66,11 +69,11 @@ class gallery extends Component {
     render() {
         return (
             <div className={style.gallery}>
-                {this.state.imageURL.map((elem) =>
-                    <Picture srcPath={elem} />
+                {this.state.imageURL.map((elem,index) =>
+                    <Picture key={index} srcPath={elem} />
                 )}
                 {this.state.imageFound === '1' && <NotFound />}
-                {this.state.imageFound == '' && <Loading />}
+                {this.state.imageFound === '' && <Loading />}
             </div>
         )
     }

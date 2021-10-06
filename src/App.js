@@ -1,6 +1,6 @@
 // import './App.css';
 import { Fragment, Component } from 'react';
-import { Route, Switch, Redirect, BrowserRouter, Link } from 'react-router-dom';
+import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 import './App.css';
 
 import Form from './component/form';
@@ -27,34 +27,24 @@ class App extends Component {
     }
   };
 
-
   searchHandler = (search) => {
     this.setState({ search: search });
   }
-
-
 
   render() {
     return (
       <Fragment>
         <h1>Snap Shot</h1>
-        {console.log("render")}
+        <Form search={this.searchHandler} />
+        <Tabs search={this.searchHandler} />
         <BrowserRouter>
-         
-            <Route path='/' exact>
-              <Redirect to='/snapshot' />
-            </Route>
-            <Route path='/snapshot' exact >
-              <Form search={this.searchHandler} />
-              <Tabs search={this.searchHandler} />
-            </Route>
-
-            <Route path={'/snapshot/'+this.state.findImage}>
-              {this.state.findImage && <Gallery searchImage={this.state.findImage} />}
-            </Route>
-          
+          <Route >
+            <Redirect to={'/snapshot/' + this.state.findImage} />
+          </Route>
+          <Route path={'/snapshot/' + this.state.findImage} exact>
+            {this.state.findImage && <Gallery searchImage={this.state.findImage} />}
+          </Route>
         </BrowserRouter>
-        {this.state.findImage && <Gallery searchImage={this.state.findImage} />}
       </Fragment>
     )
   }

@@ -1,4 +1,4 @@
-import { Fragment, Component } from 'react';
+import { Component } from 'react';
 import TabButton from './tabButton';
 import style from './tabs.module.css';
 
@@ -12,13 +12,12 @@ class Tabs extends Component {
 
     }
 
-
     render() {
         return (
             <div className={style["tab-container"]}>
                 <div className={style.tab}>
-                    {this.tags.map((elem) => (
-                        <TabButton tab={elem} onSearch={this.props.search} />
+                    {this.tags.map((elem, index) => (
+                        <TabButton key={index} tab={elem} onSearch={this.props.search} />
                     ))}
                 </div>
             </div>
