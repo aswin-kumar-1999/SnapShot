@@ -10,7 +10,8 @@ class gallery extends Component {
         super();
         this.state = {
             imageURL: [],
-            img: ''
+            img: '',
+            imageFound:''
         };
         console.log("Inside gallery",props.searchImage);
 
@@ -35,6 +36,7 @@ class gallery extends Component {
     componentDidUpdate(prevProps, prevState) {
         console.log("Updating", prevState.img, this.props.searchImage);
         if (prevState.img !== this.props.searchImage) {
+            this.setState({imageFound:""})
             this.setState({ img: this.props.searchImage })
             axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=874723272ab0b8c11a40fc8c0769153f&tags=${this.props.searchImage}&per_page=24&page=1&format=json&nojsoncallback=1`)
                 .then(function (response) {
@@ -50,7 +52,12 @@ class gallery extends Component {
                 .catch(err=>{
                     console.log("Not Found URL")
                 })
-                
+                .finally(()=>{
+
+                    if(this.state.imageURL.length == 0){
+                        this.setState({imageFound:"1"})
+                    }
+                })
         }
     }
 
@@ -60,7 +67,7 @@ class gallery extends Component {
                 {this.state.imageURL.map((elem) =>
                     <Picture srcPath={elem} />
                 )}
-                {this.state.imageURL.length === 0 && <NotFound/>}
+                {this.state.imageFound === '1' && <NotFound/>}
             </div>
         )
     }
