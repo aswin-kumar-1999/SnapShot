@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, Link } from 'react';
 import style from './tabButton.module.css';
 
 class TabButton extends Component {
